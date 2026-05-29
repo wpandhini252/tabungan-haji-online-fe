@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Detail Rekening - Tabungan Haji Online</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        .soft-shadow {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        .active-press:active {
+            transform: scale(0.98);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#221b00",
+                      "on-surface-variant": "#3d4a3d",
+                      "on-error": "#ffffff",
+                      "on-secondary-container": "#6e5c00",
+                      "on-primary-container": "#004b1e",
+                      "surface-tint": "#006e2f",
+                      "secondary-fixed": "#ffe16d",
+                      "surface": "#f8f9fa",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#6bff8f",
+                      "tertiary-fixed": "#ffe088",
+                      "surface-bright": "#f8f9fa",
+                      "on-primary-fixed-variant": "#005321",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-fixed": "#241a00",
+                      "tertiary-container": "#cca830",
+                      "on-tertiary": "#ffffff",
+                      "outline": "#6d7b6c",
+                      "surface-variant": "#e1e3e4",
+                      "on-tertiary-fixed-variant": "#574500",
+                      "surface-container": "#edeeef",
+                      "primary-fixed-dim": "#4ae176",
+                      "secondary": "#705d00",
+                      "tertiary-fixed-dim": "#e9c349",
+                      "surface-container-highest": "#e1e3e4",
+                      "primary-container": "#22c55e",
+                      "surface-container-low": "#f3f4f5",
+                      "tertiary": "#735c00",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#544600",
+                      "on-surface": "#191c1d",
+                      "on-background": "#191c1d",
+                      "background": "#f8f9fa",
+                      "inverse-surface": "#2e3132",
+                      "inverse-on-surface": "#f0f1f2",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#4f3e00",
+                      "outline-variant": "#bccbb9",
+                      "surface-dim": "#d9dadb",
+                      "primary": "#006e2f",
+                      "secondary-container": "#fcd400",
+                      "inverse-primary": "#4ae176",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary-fixed": "#002109",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#e9c400"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "2xl": "48px",
+                      "container-margin": "20px",
+                      "md": "16px",
+                      "xs": "8px",
+                      "sm": "12px",
+                      "base": "4px",
+                      "gutter": "16px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-sm": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.01em", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-lg py-md max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary">Tabungan Haji Online</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Rekening</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Transaksi</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">Laporan</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="hidden lg:flex items-center px-md py-sm bg-primary-container text-on-primary-container rounded-full font-label-md text-label-md hover:opacity-90 active-press">Zakat &amp; Sedekah</button>
+<div class="flex gap-xs">
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active-press">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-xs text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active-press">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<img alt="User profile photo" class="w-10 h-10 rounded-full border-2 border-surface-container shadow-sm" data-alt="A professional headshot of a modern young man with a friendly expression, captured with high-end portrait lighting and a soft, out-of-focus urban background. The aesthetic is clean, professional, and reliable, featuring vibrant skin tones and a sense of approachable confidence, fitting for a modern financial app interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAq_WfUsrh0_noe36PRjM1bbc7gYdn6xpjpfEHsNFT_4EGp57omxl-p62aCglGchE_lu_gp3NT-CIl8YIviUE6AB8TQFRtUhDU0yy-clJ5_ChbPRDAZk-M4iIyq99Ysj8GJoPUxoQ4ZTKY8OcMG4UaM7ZBrGeFyh5sMZ-UDgyVrhilZKYnj1gUkv2Qo28lLEvyRQ6LSWoPw9UaPQWbgn9nklqcYSl5jOaMx_IKsMPmy-IR7kv5e0L1jrH1dNgzihH2sMfCSNR8nRg"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-lg py-xl">
+<!-- Header Section -->
+<section class="mb-xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Detail Rekening</h1>
+<div class="flex items-center gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm uppercase tracking-wider">Tabungan Mabrur</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Nomor Rekening: <span class="font-bold text-on-surface">1002 8847 2291</span></p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container-high text-on-surface font-label-md text-label-md rounded-xl hover:bg-surface-container-highest transition-colors active-press">
+<span class="material-symbols-outlined">edit</span>
+                        Ubah Status
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Balance & Actions (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Balance Card -->
+<div class="bg-primary text-on-primary p-xl rounded-[24px] relative overflow-hidden soft-shadow">
+<!-- Background Accent -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -left-10 -top-10 w-40 h-40 bg-secondary-container/20 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<p class="font-label-md text-label-md text-primary-fixed opacity-90 mb-xs">Total Saldo Tersedia</p>
+<h2 class="font-display-lg text-display-lg font-extrabold leading-tight tracking-tight">Rp 45.750.000</h2>
+</div>
+<span class="material-symbols-outlined text-4xl opacity-50">account_balance_wallet</span>
+</div>
+<div class="grid grid-cols-2 gap-md pt-lg border-t border-white/20">
+<div>
+<p class="font-label-sm text-label-sm text-primary-fixed opacity-80 uppercase">Nomor Porsi</p>
+<p class="font-headline-md text-headline-md">1300984421</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-primary-fixed opacity-80 uppercase">Target Tabungan</p>
+<p class="font-headline-md text-headline-md">Rp 45.000.000</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Grid -->
+<div class="grid grid-cols-3 gap-md">
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-surface-container-low border border-outline-variant rounded-2xl hover:bg-primary-container hover:text-on-primary-container transition-all active-press group">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container group-hover:bg-on-primary-container group-hover:text-primary-container rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl">add_circle</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Setor Tunai</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-surface-container-low border border-outline-variant rounded-2xl hover:bg-secondary-container hover:text-on-secondary-container transition-all active-press group">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container group-hover:bg-on-secondary-container group-hover:text-secondary-container rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Setor QRIS</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-sm p-lg bg-surface-container-low border border-outline-variant rounded-2xl hover:bg-error-container hover:text-on-error-container transition-all active-press group">
+<div class="w-12 h-12 bg-surface-variant text-on-surface-variant group-hover:bg-on-error-container group-hover:text-error-container rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-2xl">payments</span>
+</div>
+<span class="font-label-md text-label-md font-bold">Tarik Saldo</span>
+</button>
+</div>
+<!-- Latest History (Extra Content for Fidelity) -->
+<div class="bg-surface-container-low rounded-[24px] p-lg border border-outline-variant">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md">Aktivitas Terakhir</h3>
+<a class="text-primary font-label-md text-label-md hover:underline" href="#">Lihat Semua</a>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm bg-surface rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-primary-container/30 text-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">call_made</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Setoran Berkala</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">12 Mei 2024</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary">+Rp 1.500.000</span>
+</div>
+<div class="flex items-center justify-between p-sm bg-surface rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-secondary-container/30 text-secondary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">qr_code</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Top Up via QRIS</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">05 Mei 2024</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-primary">+Rp 500.000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Haji Estimation (5 Cols) -->
+<div class="lg:col-span-5">
+<div class="bg-white rounded-[32px] p-xl border border-outline-variant soft-shadow flex flex-col h-full">
+<div class="mb-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-base">Estimasi Keberangkatan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Perkiraan jadwal berdasarkan kuota sistem saat ini.</p>
+</div>
+<!-- Countdown/Estimated Year Card -->
+<div class="bg-surface-container p-lg rounded-2xl mb-xl border-l-4 border-secondary text-center">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-xs">Estimasi Tahun Haji</p>
+<h4 class="font-display-lg text-display-lg text-on-surface font-extrabold">1449 H <span class="text-headline-md font-bold text-on-surface-variant">/ 2028 M</span></h4>
+</div>
+<!-- Progress Section -->
+<div class="mb-xl">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md font-bold">Status Pelunasan</span>
+<span class="bg-primary text-on-primary px-sm py-1 rounded-full font-label-sm text-label-sm">100% Lunas</span>
+</div>
+<div class="h-3 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full rounded-full relative shadow-[0_0_10px_rgba(34,197,94,0.4)]">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/20"></div>
+</div>
+</div>
+</div>
+<!-- Milestone Checklist -->
+<div class="space-y-md mb-xl flex-grow">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Setoran Awal Porsi</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Diterima pada 12 Jan 2020</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-lg">check</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Pelunasan</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Diterima pada 10 Mei 2024</p>
+</div>
+</div>
+<div class="flex items-center gap-md opacity-50">
+<div class="w-8 h-8 rounded-full border-2 border-outline-variant flex items-center justify-center text-outline-variant">
+<span class="material-symbols-outlined text-lg">flight_takeoff</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Keberangkatan</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dijadwalkan: Musim Haji 2028</p>
+</div>
+</div>
+</div>
+<!-- Quota Info Footer -->
+<div class="mt-auto pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-md p-md bg-secondary-container/20 rounded-2xl border border-secondary/20">
+<span class="material-symbols-outlined text-secondary text-2xl">groups</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-secondary-container uppercase">Sisa Kuota Nasional</p>
+<p class="font-headline-md text-headline-md text-on-surface">221.000 <span class="text-label-md font-normal text-on-surface-variant">Jamaah</span></p>
+</div>
+</div>
+<p class="mt-md text-center font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-sm">info</span>
+                            Data diperbarui setiap 24 jam sekali
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Decorative Info Section (Asymmetric Layout) -->
+<section class="mt-2xl grid md:grid-cols-2 gap-xl items-center">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/5 rounded-[40px] -rotate-2"></div>
+<img alt="Masjid al-Haram Detail" class="rounded-[32px] w-full h-80 object-cover relative z-10 shadow-lg" data-alt="A high-fidelity architectural photograph capturing a serene detail of the Masjid al-Haram in Mecca during the golden hour. The image focuses on the elegant white marble pillars and intricate Islamic patterns against a warm, hazy sky. The lighting is ethereal and soft, creating an atmosphere of spiritual peace and optimism that complements a modern financial app's pilgrimage-focused aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA59BdOUW1Wi-PZ-lVeqG5_yqLScwtSezE7YuefZOKDGbyqvxoTAq6aJcdE9QCTRCryly8E7xqhRQ7wQhW70WDaO7FPpEdke3-aNTsS6cPbUM5iMYZEG1HxwKfStgsXuoUa1VR9-WgkZ2wQ8Jvtb8fqUxMuU_yxTXh7fC4b9wlq24II1YGEyAXM1btUARF8G8pJX-ShegaO_u_JIEx1mode93Uv4V3PdMpFPb4Qn155xR9pxixYqkhS2k5X2_Q2b0crB1e6_w8V5w"/>
+</div>
+<div class="px-md">
+<h4 class="font-headline-lg text-headline-lg text-primary mb-md">Niatkan, Tabungkan, Wujudkan.</h4>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">
+                    Sistem tabungan kami terintegrasi langsung dengan database Siskohat Kementerian Agama RI untuk memberikan transparansi penuh atas antrean porsi haji Anda.
+                </p>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-md bg-white border border-outline-variant rounded-2xl">
+<p class="font-headline-md text-headline-md text-secondary">0.0%</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Biaya Admin</p>
+</div>
+<div class="p-md bg-white border border-outline-variant rounded-2xl">
+<p class="font-headline-md text-headline-md text-primary">Aman</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Dijamin LPS &amp; OJK</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Space -->
+<footer class="mt-2xl py-xl border-t border-outline-variant">
+<div class="max-w-7xl mx-auto px-lg flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="font-headline-md text-headline-md font-bold text-primary opacity-50">Tabungan Haji Online</div>
+<div class="flex gap-xl">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Syarat &amp; Ketentuan</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Bantuan</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 Bank Syariah Digital. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the progress bar
+        window.addEventListener('DOMContentLoaded', () => {
+            const bar = document.querySelector('.h-full.bg-primary');
+            bar.style.width = '0%';
+            setTimeout(() => {
+                bar.style.transition = 'width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                bar.style.width = '100%';
+            }, 300);
+        });
+    </script>
+</body></html>
