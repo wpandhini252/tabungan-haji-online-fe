@@ -288,6 +288,34 @@ export async function registerNasabah(input: {
     return json.data as Nasabah;
 }
 
+/**
+ * Reset password dengan verifikasi NIK + email yang terdaftar pada nasabah.
+ * Tidak butuh email/SMS karena verifikasi langsung di sisi server berdasarkan
+ * data nasabah yang sudah tersimpan.
+ */
+export async function resetPassword(input: {
+    username: string;
+    nik: string;
+    email: string;
+    newPassword: string;
+}): Promise<{ message: string }> {
+    let res: Response;
+    try {
+        res = await fetch(`${API_URL}/user/reset-password`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(input),
+        });
+    } catch {
+        throw new Error("Tidak dapat terhubung ke server. Periksa koneksi Anda.");
+    }
+    const json = await res.json().catch(() => null);
+    if (!res.ok) {
+        throw new Error(json?.message ?? "Gagal mereset password.");
+    }
+    return { message: json?.message ?? "Password berhasil direset." };
+}
+
 export async function registerUser(input: {
     nasabahId: string;
     username: string;

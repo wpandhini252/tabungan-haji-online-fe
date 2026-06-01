@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Sidebar } from "@/components/sidebar";
 import {
-  downloadLaporan,
   formatRupiah,
   getEstimasi,
   getToken,
@@ -41,7 +40,6 @@ export default function TransaksiPage() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [downloading, setDownloading] = useState(false);
 
   // Muat daftar rekening sekali
   useEffect(() => {
@@ -112,27 +110,6 @@ export default function TransaksiPage() {
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageRows = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-
-  async function handleDownload() {
-    if (downloading) return;
-    setDownloading(true);
-    setError(null);
-    try {
-      const blob = await downloadLaporan(now.getFullYear(), now.getMonth() + 1, selectedTab || undefined);
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `laporan-transaksi-${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Gagal mengunduh laporan.");
-    } finally {
-      setDownloading(false);
-    }
-  }
 
   return (
     <div className="bg-surface text-on-surface min-h-screen">
@@ -322,16 +299,6 @@ export default function TransaksiPage() {
           </div>
         </section>
       </main>
-
-      {/* Floating download button */}
-      <button
-        onClick={handleDownload}
-        disabled={downloading || !selectedTab}
-        className="fixed bottom-6 right-6 lg:bottom-12 lg:right-12 bg-primary-container text-on-primary-container px-8 py-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-4 z-50 disabled:opacity-60"
-      >
-        <span className="material-symbols-outlined">{downloading ? "hourglass_top" : "download"}</span>
-        <span className="text-sm font-semibold">{downloading ? "Mengunduh…" : "Unduh Laporan"}</span>
-      </button>
     </div>
   );
 }

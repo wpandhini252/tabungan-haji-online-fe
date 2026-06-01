@@ -105,9 +105,12 @@ export default function LoginPage() {
                 <label className="text-sm font-semibold text-on-surface" htmlFor="password">
                   Password
                 </label>
-                <a className="text-xs font-bold text-primary hover:underline transition-all" href="#">
+                <Link
+                  className="text-xs font-bold text-primary hover:underline transition-all"
+                  href="/lupa-password"
+                >
                   Lupa Password?
-                </a>
+                </Link>
               </div>
               <div className="relative group">
                 <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">
